@@ -122,13 +122,13 @@ export default function App(){
       <div style={{marginTop:14}}>
         <div style={S.sl}>What This Model Shows</div>
         <div style={{padding:'12px 14px',borderRadius:8,background:'#111',border:'1px solid #1a1a2a',lineHeight:1.7,fontSize:12,color:'#bbb'}}>
-          <p style={{margin:'0 0 10px'}}>This tool models how Paul Skenes can manipulate where he stands on the pitching rubber to change the angle his pitches take toward home plate ??? without changing his mechanics, grip, or pitch shape at all.</p>
-          <p style={{margin:'0 0 10px'}}>Think of it this way: if you're a hitter, you're reading the pitch out of the pitcher's hand and trying to predict where it's going. When Skenes shifts 24 inches on the rubber between right-handed and left-handed hitters, it's like changing the angle of a gun barrel ??? every pitch comes in on a slightly different line, and the hitter has to recalibrate entirely.</p>
-          <p style={{margin:'0 0 10px'}}>The <span style={S.ih}>key finding</span> is that moving on the rubber doesn't make his fastball and slider tunnel better <em>together</em> ??? that separation is locked in by the pitch shapes themselves. What it does is optimize the <span style={S.ih}>approach angle of his best pitch to its best zone</span> for each batter hand. Against righties, he maximizes the angle of his sinker and sweeper to the outer half. Against lefties, he maximizes the changeup's deception on the outer edge.</p>
+          <p style={{margin:'0 0 10px'}}>This tool models how Paul Skenes can manipulate where he stands on the pitching rubber to change the angle his pitches take toward home plate -- without changing his mechanics, grip, or pitch shape at all.</p>
+          <p style={{margin:'0 0 10px'}}>Think of it this way: if you're a hitter, you're reading the pitch out of the pitcher's hand and trying to predict where it's going. When Skenes shifts 24 inches on the rubber between right-handed and left-handed hitters, it's like changing the angle of a gun barrel -- every pitch comes in on a slightly different line, and the hitter has to recalibrate entirely.</p>
+          <p style={{margin:'0 0 10px'}}>The <span style={S.ih}>key finding</span> is that moving on the rubber doesn't make his fastball and slider tunnel better <em>together</em> -- that separation is locked in by the pitch shapes themselves. What it does is optimize the <span style={S.ih}>approach angle of his best pitch to its best zone</span> for each batter hand. Against righties, he maximizes the angle of his sinker and sweeper to the outer half. Against lefties, he maximizes the changeup's deception on the outer edge.</p>
           
-          <p style={{margin:0,color:'#888',fontSize:11}}>Trajectory model uses quadratic Magnus buildup: x(f) = relX + (plateLoc ??? pfx ??? relX) * f + pfx * f^2. HAA = arctan((plateLoc ??? relX) / 648"). Release offset: rubber ??? 24" (RHP arm geometry).</p>
+          <p style={{margin:0,color:'#888',fontSize:11}}>Trajectory model uses quadratic Magnus buildup: x(f) = relX + (plateLoc - pfx - relX) * f + pfx * f^2. HAA = arctan((plateLoc - relX) / 648"). Release offset: rubber - 24" (RHP arm geometry).</p>
         </div>
       </div>
-      <div style={{textAlign:'center',padding:'16px 0 8px',fontSize:9,color:'#333'}}>Data: Baseball Savant 2024  |  Model: Quadratic Magnus  |  Built for Paul Skenes</div>
+      <div style={{textAlign:'center',padding:'16px 0 8px',fontSize:9,color:'#333'}}>Model: Quadratic Magnus  |  Built for Paul Skenes</div>
     </div>)
 }
