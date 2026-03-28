@@ -111,7 +111,7 @@ export default function App(){
             <span style={S.lv}>{p.pl>0?'+':''}{p.pl}"</span></>)}</div>)})}</div>
       <div style={S.sc}><div style={S.sl}>Horizontal Approach Angles</div>
         <div style={S.sg}>{haaData.map(h=>(<div key={h.t} style={S.sc2(h.cat.color)}>
-          <div style={S.sl2}>{h.cat.sn} HAA</div><div style={S.sv2}>{h.haa.toFixed(2)}°</div>
+          <div style={S.sl2}>{h.cat.sn} HAA</div><div style={S.sv2}>{h.haa.toFixed(2)}Â°</div>
           <div style={S.ss}>Break: {h.cat.pfx>0?'+':''}{h.cat.pfx}"  |  {h.cat.velo} mph</div></div>))}</div></div>
       {tPairs.length>0&&(<div style={S.sc}><div style={S.sl}>Tunnel Separation @ 28 ft</div>
         {tPairs.map((t,i)=>(<div key={i} style={S.tc}><div style={S.tl}><span style={{color:t.cA,fontWeight:600}}>{t.a}</span>{'  '}<span style={{color:t.cB,fontWeight:600}}>{t.b}</span></div>
@@ -119,6 +119,16 @@ export default function App(){
       <div style={S.ib}><div style={S.it}><span style={S.ih}>Key Finding: </span>
         Tunnel separation at the 28-ft tunnel point is{' '}<span style={S.ih}>analytically independent of rubber position</span>  the release_x term cancels out. Drag the rubber slider to verify. What rubber position controls is the{' '}<span style={S.ih}>absolute HAA of every pitch</span> to its target zone.</div>
         <div style={{...S.it,marginTop:8}}>Skenes' ~24" total rubber shift between RHH/LHH matchups means hitters calibrate to a completely different release window  one of only 23 pitcher seasons in the Hawkeye era with a shift exceeding 12 inches.</div></div>
+      <div style={{marginTop:14}}>
+        <div style={S.sl}>What This Model Shows</div>
+        <div style={{padding:'12px 14px',borderRadius:8,background:'#111',border:'1px solid #1a1a2a',lineHeight:1.7,fontSize:12,color:'#bbb'}}>
+          <p style={{margin:'0 0 10px'}}>This tool models how Paul Skenes can manipulate where he stands on the pitching rubber to change the angle his pitches take toward home plate — without changing his mechanics, grip, or pitch shape at all.</p>
+          <p style={{margin:'0 0 10px'}}>Think of it this way: if you\'re a hitter, you\'re reading the pitch out of the pitcher\'s hand and trying to predict where it\'s going. When Skenes shifts 24 inches on the rubber between right-handed and left-handed hitters, it\'s like changing the angle of a gun barrel — every pitch comes in on a slightly different line, and the hitter has to recalibrate entirely.</p>
+          <p style={{margin:'0 0 10px'}}>The <span style={S.ih}>key finding</span> is that moving on the rubber doesn\'t make his fastball and slider tunnel better <em>together</em> — that separation is locked in by the pitch shapes themselves. What it does is optimize the <span style={S.ih}>approach angle of his best pitch to its best zone</span> for each batter hand. Against righties, he maximizes the angle of his sinker and sweeper to the outer half. Against lefties, he maximizes the changeup\'s deception on the outer edge.</p>
+          <p style={{margin:'0 0 10px'}}>Only 23 pitcher-seasons in the entire Hawkeye tracking era have involved a rubber shift of more than 12 inches. Skenes shifts 24. It\'s a sign of elite pitching IQ — he\'s engineering deception at a level almost no one else in the sport is doing.</p>
+          <p style={{margin:0,color:'#888',fontSize:11}}>Data sourced from Baseball Savant Hawkeye 2024. Trajectory model uses quadratic Magnus buildup: x(f) = relX + (plateLoc − pfx − relX)·f + pfx·f². HAA = arctan((plateLoc − relX) / 648"). Release offset: rubber − 24" (RHP arm geometry).</p>
+        </div>
+      </div>
       <div style={{textAlign:'center',padding:'16px 0 8px',fontSize:9,color:'#333'}}>Data: Baseball Savant 2024  |  Model: Quadratic Magnus  |  Built for Paul Skenes</div>
     </div>)
 }
