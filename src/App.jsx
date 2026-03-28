@@ -7,8 +7,8 @@ const PC = {
   SI:{name:'Sinker',color:'#ff8866',velo:97.8,pfx:-15.2,ivb:8.4,sn:'SI'},
 }
 const PR=[
-  {label:'Skenes vs RHH — Full Arsenal',rx:-12,b:'R',p:[{t:'FF',pl:-3,a:true},{t:'SL',pl:7,a:true},{t:'CH',pl:2,a:true},{t:'SP',pl:-1,a:true},{t:'SI',pl:-5,a:true}]},
-  {label:'Skenes vs LHH — Full Arsenal',rx:12,b:'L',p:[{t:'FF',pl:4,a:true},{t:'SL',pl:-3,a:true},{t:'CH',pl:8,a:true},{t:'SP',pl:5,a:true},{t:'SI',pl:2,a:true}]},
+  {label:'Skenes vs RHH  Full Arsenal',rx:-12,b:'R',p:[{t:'FF',pl:-3,a:true},{t:'SL',pl:7,a:true},{t:'CH',pl:2,a:true},{t:'SP',pl:-1,a:true},{t:'SI',pl:-5,a:true}]},
+  {label:'Skenes vs LHH  Full Arsenal',rx:12,b:'L',p:[{t:'FF',pl:4,a:true},{t:'SL',pl:-3,a:true},{t:'CH',pl:8,a:true},{t:'SP',pl:5,a:true},{t:'SI',pl:2,a:true}]},
 ]
 const MTP=60.5*12,ARM=24,REL=78,PLW=17
 function cRX(rx){return rx-ARM}
@@ -44,7 +44,7 @@ function draw(canvas,st){
     const tx=tX(tF,rlX,p.pl,cat.pfx);ctx.fillStyle=cat.color;ctx.globalAlpha=0.5;ctx.beginPath();ctx.arc(cX(tx),cY(tY),3,0,Math.PI*2);ctx.fill();ctx.globalAlpha=1
     ctx.fillStyle=cat.color;ctx.font='bold 9px -apple-system,sans-serif';ctx.textAlign='center';ctx.fillText(cat.sn,eX,eY+16)})
   ctx.fillStyle='#555';ctx.font='9px -apple-system,sans-serif';ctx.textAlign='center'
-  ctx.fillText('3B side â',cX(-35),h-10);ctx.fillText('â 1B side',cX(35),h-10);ctx.fillText('MOUND',cX(0),pT-8);ctx.fillText('HOME',cX(0),h-10)
+  ctx.fillText('3B side ',cX(-35),h-10);ctx.fillText(' 1B side',cX(35),h-10);ctx.fillText('MOUND',cX(0),pT-8);ctx.fillText('HOME',cX(0),h-10)
 }
 export default function App(){
   const canvasRef=useRef(null)
@@ -94,7 +94,7 @@ export default function App(){
   }
   return (
     <div style={S.ct}>
-      <div style={S.hd}><h1 style={S.ti}>â¾ Skenes HAA Pitch Model</h1><div style={S.st}>Horizontal Approach Angle Â· Rubber Position Â· Tunnel Analysis</div></div>
+      <div style={S.hd}><h1 style={S.ti}> Skenes HAA Pitch Model</h1><div style={S.st}>Horizontal Approach Angle  |  Rubber Position  |  Tunnel Analysis</div></div>
       <div style={S.sc}><div style={S.sl}>Presets</div><div style={S.pg}>{PR.map((p,i)=>(<button key={i} style={S.pb(activePreset===i)} onClick={()=>applyPreset(i)}>{p.label}</button>))}</div></div>
       <div style={S.sc}><div style={S.sl}>Top-Down View (Bird's Eye)</div><canvas ref={canvasRef} style={S.cv}/></div>
       <div style={S.sc}><div style={S.sl}>Rubber Position</div>
@@ -103,7 +103,7 @@ export default function App(){
           <span style={{fontSize:10,color:'#666'}}>1B</span><span style={S.sv}>{rubberX>0?'+':''}{rubberX}"</span></div></div>
       <div style={S.sc}><div style={S.sl}>Batter Hand</div>
         <div style={S.bt}><button style={S.bb(batter==='R')} onClick={()=>setBatter('R')}>RHH</button><button style={S.bb(batter==='L')} onClick={()=>setBatter('L')}>LHH</button></div></div>
-      <div style={S.sc}><div style={S.sl}>Pitches Â· Tap to toggle Â· Slide for plate location</div>
+      <div style={S.sc}><div style={S.sl}>Pitches  |  Tap to toggle  |  Slide for plate location</div>
         {pitches.map((p,i)=>{const cat=PC[p.t];return(<div key={p.t} style={{...S.pr,background:p.a?'#0d0d15':'#0a0a0f'}}>
           <div style={S.pd(cat.color,p.a)} onClick={()=>togglePitch(i)}/>
           <span style={S.pn(p.a)} onClick={()=>togglePitch(i)}>{cat.name} ({cat.velo} mph)</span>
@@ -111,14 +111,14 @@ export default function App(){
             <span style={S.lv}>{p.pl>0?'+':''}{p.pl}"</span></>)}</div>)})}</div>
       <div style={S.sc}><div style={S.sl}>Horizontal Approach Angles</div>
         <div style={S.sg}>{haaData.map(h=>(<div key={h.t} style={S.sc2(h.cat.color)}>
-          <div style={S.sl2}>{h.cat.sn} HAA</div><div style={S.sv2}>{h.haa.toFixed(2)}Â°</div>
-          <div style={S.ss}>Break: {h.cat.pfx>0?'+':''}{h.cat.pfx}" Â· {h.cat.velo} mph</div></div>))}</div></div>
+          <div style={S.sl2}>{h.cat.sn} HAA</div><div style={S.sv2}>{h.haa.toFixed(2)}°</div>
+          <div style={S.ss}>Break: {h.cat.pfx>0?'+':''}{h.cat.pfx}"  |  {h.cat.velo} mph</div></div>))}</div></div>
       {tPairs.length>0&&(<div style={S.sc}><div style={S.sl}>Tunnel Separation @ 28 ft</div>
-        {tPairs.map((t,i)=>(<div key={i} style={S.tc}><div style={S.tl}><span style={{color:t.cA,fontWeight:600}}>{t.a}</span>{' â '}<span style={{color:t.cB,fontWeight:600}}>{t.b}</span></div>
+        {tPairs.map((t,i)=>(<div key={i} style={S.tc}><div style={S.tl}><span style={{color:t.cA,fontWeight:600}}>{t.a}</span>{'  '}<span style={{color:t.cB,fontWeight:600}}>{t.b}</span></div>
           <div style={S.tv}>{t.sep.toFixed(1)}" separation</div></div>))}</div>)}
       <div style={S.ib}><div style={S.it}><span style={S.ih}>Key Finding: </span>
-        Tunnel separation at the 28-ft tunnel point is{' '}<span style={S.ih}>analytically independent of rubber position</span> â the release_x term cancels out. Drag the rubber slider to verify. What rubber position controls is the{' '}<span style={S.ih}>absolute HAA of every pitch</span> to its target zone.</div>
-        <div style={{...S.it,marginTop:8}}>Skenes' ~24" total rubber shift between RHH/LHH matchups means hitters calibrate to a completely different release window â one of only 23 pitcher seasons in the Hawkeye era with a shift exceeding 12 inches.</div></div>
-      <div style={{textAlign:'center',padding:'16px 0 8px',fontSize:9,color:'#333'}}>Data: Baseball Savant 2024 Â· Model: Quadratic Magnus Â· Built for Paul Skenes</div>
+        Tunnel separation at the 28-ft tunnel point is{' '}<span style={S.ih}>analytically independent of rubber position</span>  the release_x term cancels out. Drag the rubber slider to verify. What rubber position controls is the{' '}<span style={S.ih}>absolute HAA of every pitch</span> to its target zone.</div>
+        <div style={{...S.it,marginTop:8}}>Skenes' ~24" total rubber shift between RHH/LHH matchups means hitters calibrate to a completely different release window  one of only 23 pitcher seasons in the Hawkeye era with a shift exceeding 12 inches.</div></div>
+      <div style={{textAlign:'center',padding:'16px 0 8px',fontSize:9,color:'#333'}}>Data: Baseball Savant 2024  |  Model: Quadratic Magnus  |  Built for Paul Skenes</div>
     </div>)
 }
