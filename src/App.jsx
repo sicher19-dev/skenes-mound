@@ -111,7 +111,7 @@ export default function App(){
             <span style={S.lv}>{p.pl>0?'+':''}{p.pl}"</span></>)}</div>)})}</div>
       <div style={S.sc}><div style={S.sl}>Horizontal Approach Angles</div>
         <div style={S.sg}>{haaData.map(h=>(<div key={h.t} style={S.sc2(h.cat.color)}>
-          <div style={S.sl2}>{h.cat.sn} HAA</div><div style={S.sv2}>{h.haa.toFixed(2)}??°</div>
+          <div style={S.sl2}>{h.cat.sn} HAA</div><div style={S.sv2}>{h.haa.toFixed(2)}{String.fromCharCode(176)}</div>
           <div style={S.ss}>Break: {h.cat.pfx>0?'+':''}{h.cat.pfx}"  |  {h.cat.velo} mph</div></div>))}</div></div>
       {tPairs.length>0&&(<div style={S.sc}><div style={S.sl}>Tunnel Separation @ 28 ft</div>
         {tPairs.map((t,i)=>(<div key={i} style={S.tc}><div style={S.tl}><span style={{color:t.cA,fontWeight:600}}>{t.a}</span>{'  '}<span style={{color:t.cB,fontWeight:600}}>{t.b}</span></div>
